@@ -5,7 +5,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>The Grain Journal — Home</title>
   <meta name="description" content="Beginner-friendly film photography: tips, film comparisons, photo experiments, and resources." />
+  <meta name="author" content="Bellaamann">
+  <meta name="keywords" content="film, photography, portra, cinestill, film tips, film scanning">
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Inline helpers for responsive video and thumbnail */
+    .video-wrap { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:6px; max-width:880px; }
+    .video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .yt-thumb { display:block; position:relative; max-width:560px; border-radius:6px; overflow:hidden; text-decoration:none; color:inherit; }
+    .yt-thumb img { width:100%; height:auto; display:block; object-fit:cover; }
+    .yt-thumb .play { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:64px; height:64px; background:rgba(0,0,0,0.45); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:26px; pointer-events:none; }
+    .video-note { margin-top:10px; color:#6b4a37; font-size:0.95rem; }
+  </style>
 </head>
 <body>
   <div class="site">
@@ -32,8 +43,16 @@
           <h2 id="hero-heading">Discover Film</h2>
           <p class="lead">Beginner-friendly experiments, tips, and real photo examples to help you start and grow with film.</p>
 
-          <div class="hero-image" role="img" aria-label="Portrait on Kodak Portra 400 - warm tones">
-            <!-- replace with: <img src="images/portra-portrait.jpg" alt="Portrait on Kodak Portra 400 — warm tones"> -->
+          <div class="hero-image" role="img" aria-label="Outdoor portrait on color film, warm tones">
+            <!-- Hero image expected at project root as hero.jpg -->
+            <img
+              src="hero.jpg"
+              alt="Outdoor portrait with warm tones on color film, soft highlights and natural background"
+              class="responsive-img-fit"
+              width="1200"
+              height="800"
+              loading="eager"
+              onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22700%22 height=%22380%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f5f5f5%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23666%22 font-family=%22Arial,Helvetica,sans-serif%22 font-size=%2216%22>Hero image not found — please add hero.jpg at project root</text></svg>';">
           </div>
 
           <div class="hero-ctas">
@@ -41,7 +60,7 @@
             <a class="btn" href="tips.html">Start with Tips</a>
           </div>
 
-          <p class="note">Example frame: portrait shot on Kodak Portra 400 - see the Gallery for more examples.</p>
+          <p class="note">Example frame: portrait shot on Kodak Portra 400 — see the Gallery for more examples.</p>
         </div>
       </section>
 
@@ -49,7 +68,13 @@
         <article>
           <h3>Gallery Preview</h3>
           <p>Recent Rolls - Portra 400, Portra 800</p>
-          <div class="thumb" role="img" aria-label="Sample frame on Kodak Portra 400"></div>
+
+          <!-- Gallery preview (project root file galleryprev.jpg or whichever preview you use) -->
+          <figure class="preview-thumb" style="margin:12px auto; max-width:100%;">
+            <img src="galleryprev.jpg" alt="Two people on a beach, film photograph with warm tones" loading="lazy" style="width:100%; height:auto; border-radius:6px; object-fit:cover;">
+            <figcaption style="font-size:0.95rem; color:#382406; padding-top:6px;">Gallery preview — beach frame</figcaption>
+          </figure>
+
           <p><a href="gallery.html" class="small-link">View gallery</a></p>
         </article>
 
@@ -69,13 +94,16 @@
       <section class="featured-comparison" aria-labelledby="comp-heading">
         <h4 id="comp-heading">Featured comparison</h4>
         <div class="comp-images">
+          <!-- Left: Portra 400 preview (file is in project root as portra400prev.jpg) -->
           <figure>
-            <div class="comp-thumb" role="img" aria-label="Left: Portra 400 portrait"></div>
+            <img src="portra400prev.jpg" alt="Portrait shot on Kodak Portra 400 — warm tones" loading="lazy" style="width:100%; height:auto; border-radius:6px; object-fit:cover;">
             <figcaption>Kodak Portra 400 - portrait</figcaption>
           </figure>
+
+          <!-- Right: Cinestill 50D preview (file is in project root as cinestill50Dprev.jpg) -->
           <figure>
-            <div class="comp-thumb" role="img" aria-label="Right: Cinestill 400D cool-tone portrait"></div>
-            <figcaption>Cinestill 400D - cool tone</figcaption>
+            <img src="cinestill50Dprev.jpg" alt="Portrait shot on Cinestill 50D — cool tone" loading="lazy" style="width:100%; height:auto; border-radius:6px; object-fit:cover;">
+            <figcaption>Cinestill 50D - cool tone</figcaption>
           </figure>
         </div>
 
@@ -101,8 +129,8 @@
                 <td>Higher ISO performance; grain visible in low light</td>
               </tr>
               <tr>
-                <td>Cinestill 400D</td>
-                <td>400</td>
+                <td>Cinestill 50D</td>
+                <td>50</td>
                 <td>Cool</td>
                 <td>Medium</td>
                 <td>Cool-tone, cinematic look</td>
@@ -114,8 +142,35 @@
 
       <section class="video" aria-labelledby="video-heading">
         <h3 id="video-heading">How to load 35mm</h3>
-        <video src="videos/load35mm.mp4" controls width="640">Your browser does not support the video tag.</video>
-        <p class="note">Hands on tutorial: Loading a 35mm roll.</p>
+
+        <!-- Responsive YouTube embed (primary) -->
+        <div class="video-wrap" aria-hidden="false">
+          <iframe
+            src="https://www.youtube.com/embed/nj-RKg995zo?rel=0"
+            title="How to load 35mm film"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"></iframe>
+        </div>
+
+        <p class="video-note">Watch this quick video on loading film into a 35mm camera!</p>
+
+        <!-- Clickable thumbnail fallback (opens the video on YouTube) -->
+        <div style="margin-top:10px;">
+          <a class="yt-thumb" href="https://www.youtube.com/watch?v=nj-RKg995zo" target="_blank" rel="noopener noreferrer">
+            <img src="https://img.youtube.com/vi/nj-RKg995zo/hqdefault.jpg" alt="How to load 35mm film — tutorial" loading="lazy">
+            <span class="play">►</span>
+          </a>
+        </div>
+
+        <!-- Optional: local MP4 fallback (uncomment if you want to serve the file yourself)
+        Place the file at: videos/load35mm.mp4 relative to index.html
+        <video controls style="display:block; max-width:880px; width:100%; margin-top:12px; border-radius:6px;">
+          <source src="videos/load35mm.mp4" type="video/mp4">
+          Your browser does not support the video tag. <a href="videos/load35mm.mp4">Download the tutorial</a>.
+        </video>
+        -->
+
       </section>
 
       <aside class="quick-contact" aria-labelledby="quick-contact-heading">
@@ -135,16 +190,30 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="comparisons.html">Comparisons</a></li>
+            <li><a href="tips.html">Tips</a></li>
             <li><a href="resources.html">Resources</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
 
         <div class="copyright">
-          <p>© 2025 The Grain Journal - All photos by author (BellaMann) unless noted.</p>
+          <p>© 2025 The Grain Journal - All photos by author unless noted.</p>
         </div>
       </div>
     </footer>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const img = document.querySelector('.hero-image img');
+      if (!img) return;
+      img.addEventListener('error', function(){
+        console.error('Hero image failed to load. Check that hero.jpg exists in the same folder as index.html and that the filename is all lowercase (hero.jpg).');
+      });
+      img.addEventListener('load', function(){
+        console.info('Hero image loaded:', img.currentSrc || img.src);
+      });
+    });
+  </script>
 </body>
 </html>
