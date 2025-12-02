@@ -7,6 +7,28 @@
   <meta name="description" content="Side-by-side comparisons of film stocks with notes about tone and grain." />
   <meta name="author" content="Bellaamann">
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Local styles for the comparison gallery -->
+  <style>
+    .comp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+      align-items: start;
+    }
+    .comp-grid figure {
+      margin: 0;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,0,0,0.04);
+      text-align: center;
+    }
+    .comp-grid img { width: 100%; height: auto; display: block; border-radius: 6px; }
+    .film-label { margin-top: 8px; font-weight: 600; color: var(--text); }
+    .broken { opacity: 0.45; }
+  </style>
 </head>
 <body>
   <div class="site">
@@ -27,22 +49,57 @@
     <main>
       <section class="page-intro">
         <h2>Film Comparisons</h2>
-        <p>Compare look, ISO handling, and grain between popular stocks used for portraits and street photography.</p>
       </section>
 
       <section class="featured-comparison">
-        <div class="comp-images">
-          <figure>
-            <img src="images/thumb1.jpg" alt="Portra 400 sample" loading="lazy">
-            <figcaption>Kodak Portra 400</figcaption>
+        <!-- Comparison images: placed ABOVE the table -->
+        <div class="comp-grid" id="comparison-grid" aria-label="Film comparison gallery">
+          <!-- Basenames match the exact names you provided in the root -->
+          <figure data-basename="Portra4002.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Portra 400 sample" loading="lazy">
+            </a>
+            <div class="film-label">Portra 400</div>
           </figure>
-          <figure>
-            <img src="images/thumb4.jpg" alt="Cinestill 50D sample" loading="lazy">
-            <figcaption>Cinestill 50D</figcaption>
+
+          <figure data-basename="Cinestill50D.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Cinestill 50D sample" loading="lazy">
+            </a>
+            <div class="film-label">Cinestill 50D</div>
+          </figure>
+
+          <figure data-basename="Cinestill50D2.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Cinestill 50D sample" loading="lazy">
+            </a>
+            <div class="film-label">Cinestill 50D</div>
+          </figure>
+
+          <figure data-basename="Portra8002.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Portra 800 sample" loading="lazy">
+            </a>
+            <div class="film-label">Portra 800</div>
+          </figure>
+
+          <figure data-basename="Porta800.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Portra 800 sample" loading="lazy">
+            </a>
+            <div class="film-label">Portra 800</div>
+          </figure>
+
+          <figure data-basename="Portra 400.FC">
+            <a class="img-link" href="#" target="_blank" rel="noopener">
+              <img class="comp-img" src="" alt="Portra 400 sample" loading="lazy">
+            </a>
+            <div class="film-label">Portra 400</div>
           </figure>
         </div>
 
-        <div class="table-teaser">
+        <!-- Table teaser remains below the images -->
+        <div class="table-teaser" style="margin-top:20px;">
           <h5>Film Comparison Summary</h5>
           <table>
             <thead>
@@ -65,7 +122,7 @@
                 <td>Cinestill 50D</td>
                 <td>Cinematic daylight</td>
                 <td>50</td>
-                <td>Cooler tones, cinematic look with halation on highlights</td>
+                <td>Cooler tones, cinematic look with a cinematic highlight glow</td>
               </tr>
             </tbody>
           </table>
@@ -89,5 +146,60 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    (function(){
+      // Try common extensions and common folders to find the actual file on disk.
+      const EXTENSIONS = ["", ".jpg", ".jpeg", ".JPG", ".JPEG", ".png", ".webp"];
+      const PREFIXES = ["", "photos-1200/", "images/", "photos/"];
+
+      function tryLoadSequential(basename, prefixes, exts) {
+        const candidates = [];
+        prefixes.forEach(p => exts.forEach(e => candidates.push(p + basename + e)));
+        let i = 0;
+        return new Promise((resolve) => {
+          function tryNext() {
+            if (i >= candidates.length) return resolve(null);
+            const url = candidates[i++];
+            const img = new Image();
+            img.onload = () => resolve(url);
+            img.onerror = () => tryNext();
+            // Start loading this candidate; onerror will move to next
+            img.src = url;
+          }
+          tryNext();
+        });
+      }
+
+      async function resolveAll() {
+        const figures = Array.from(document.querySelectorAll('.comp-grid figure'));
+        for (const fig of figures) {
+          const basename = fig.getAttribute('data-basename');
+          const link = fig.querySelector('.img-link');
+          const imgEl = fig.querySelector('.comp-img');
+
+          const found = await tryLoadSequential(basename, PREFIXES, EXTENSIONS);
+
+          if (found) {
+            imgEl.src = found;
+            link.href = found;
+            imgEl.classList.remove('broken');
+          } else {
+            imgEl.src = '';
+            imgEl.alt = basename + " (not found)";
+            link.href = "#";
+            imgEl.classList.add('broken');
+            console.warn('Comparison image not found for basename:', basename);
+          }
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', resolveAll);
+      } else {
+        resolveAll();
+      }
+    })();
+  </script>
 </body>
 </html>
