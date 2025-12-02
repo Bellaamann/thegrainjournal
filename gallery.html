@@ -4,17 +4,20 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gallery — The Grain Journal</title>
-  <meta name="description" content="A gallery of sample frames from different film stocks. Compare look and grain across Portra, Cinestill, and more." />
-  <meta name="author" content="Bellaamann">
+  <meta name="description" content="A gallery of sample frames from different film stocks." />
+  <meta name="author" content="Bellaamann" />
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .gallery-grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap:18px; margin:20px 0; }
+    .gallery-grid figure { margin:0; background:#fff; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); text-align:center; color:var(--secondary); }
+    .gallery-grid img { width:100%; height:auto; display:block; border-radius:6px; }
+    .gallery-note { color:#666; font-size:0.95rem; margin-top:8px; }
+  </style>
 </head>
 <body>
   <div class="site">
     <header>
-      <div class="brand">
-        <h1>The Grain Journal</h1>
-      </div>
-
+      <div class="brand"><h1>The Grain Journal</h1></div>
       <nav aria-label="Primary navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -30,39 +33,87 @@
     <main>
       <section class="page-intro">
         <h2>Gallery</h2>
-        <p>Sample frames from recent rolls. Drop your thumbnails into images/ and update filenames below if needed.</p>
       </section>
 
       <section class="gallery-grid" aria-label="Photo gallery">
-        <!-- Replace the filenames below with the exact names you put in images/ -->
         <figure>
-          <img src="images/thumb1.jpg" alt="Outdoor portrait with warm tones on Portra 400" loading="lazy">
-          <figcaption>Portra 400 — warm portrait</figcaption>
+          <a href="photos-1200/IMG_3949.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3949.jpeg" alt="IMG 3949" loading="lazy">
+          </a>
         </figure>
 
         <figure>
-          <img src="images/thumb2.jpg" alt="Street scene captured on a 400 ISO film" loading="lazy">
-          <figcaption>Street — 400 ISO sample</figcaption>
+          <a href="photos-1200/IMG_3952.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3952.jpeg" alt="IMG 3952" loading="lazy">
+          </a>
         </figure>
 
         <figure>
-          <img src="images/thumb3.jpg" alt="Low-light interior with visible film grain" loading="lazy">
-          <figcaption>Interior — visible grain</figcaption>
+          <a href="photos-1200/IMG_3954.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3954.jpeg" alt="IMG 3954" loading="lazy">
+          </a>
         </figure>
 
         <figure>
-          <img src="images/thumb4.jpg" alt="Cool-tone portrait shot on Cinestill 50D" loading="lazy">
-          <figcaption>Cinestill 50D — cool tone</figcaption>
+          <a href="photos-1200/Untitled%20design.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/Untitled%20design.jpeg" alt="Untitled design" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3944.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3944.jpeg" alt="IMG 3944" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3947.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3947.jpeg" alt="IMG 3947" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3960.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3960.jpeg" alt="IMG 3960" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3966.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3966.jpeg" alt="IMG 3966" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3942.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3942.jpeg" alt="IMG 3942" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/Untitled%20design.zip%20-%208.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/Untitled%20design.zip%20-%208.jpeg" alt="Untitled design zip 8" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3963.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3963.jpeg" alt="IMG 3963" loading="lazy">
+          </a>
+        </figure>
+
+        <figure>
+          <a href="photos-1200/IMG_3953%202.jpeg" target="_blank" rel="noopener">
+            <img src="photos-1200/IMG_3953%202.jpeg" alt="IMG 3953 2" loading="lazy">
+          </a>
         </figure>
       </section>
+
     </main>
 
     <footer>
       <div class="footer-inner">
-        <div class="footer-contact">
-          <p>Contact: <span class="email">bella1211gold@gmail.com</span></p>
-        </div>
-
+        <div class="footer-contact"><p>Contact: <span class="email">bella1211gold@gmail.com</span></p></div>
         <nav aria-label="Footer navigation">
           <ul class="footer-nav">
             <li><a href="index.html">Home</a></li>
@@ -72,10 +123,7 @@
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
-
-        <div class="copyright">
-          <p>© 2025 The Grain Journal</p>
-        </div>
+        <div class="copyright"><p>© 2025 The Grain Journal</p></div>
       </div>
     </footer>
   </div>
