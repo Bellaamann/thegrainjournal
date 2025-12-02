@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact & Feedback — The Grain Journal</title>
+  <meta name="description" content="Contact The Grain Journal — send feedback, ask questions, or subscribe for updates." />
+  <meta name="keywords" content="film photography contact, feedback, The Grain Journal" />
+  <meta name="author" content="Bellaamann" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .contact-inner { max-width:760px; margin:18px auto; background:#fff; padding:18px; border-radius:8px; border:1px solid rgba(0,0,0,0.04); color:var(--secondary); }
+    .contact-inner h2, .contact-inner h3 { color:var(--text); margin-bottom:6px; }
+    form .form-row { margin-bottom:12px; display:flex; flex-direction:column; }
+    form label { font-weight:700; margin-bottom:6px; color:var(--secondary); }
+    form input[type="text"], form input[type="email"], form input[type="tel"], form textarea, form select {
+      padding:10px; border-radius:6px; border:1px solid rgba(0,0,0,0.08); font-size:15px; color:var(--secondary);
+      background: #fafafa;
+    }
+    form textarea { resize:vertical; min-height:120px; }
+    .form-actions { margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .helper { font-size:13px; color:#666; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <h1>The Grain Journal</h1>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="gallery.html">Film Gallery</a></li>
+          <li><a href="tips.html">Tips &amp; Techniques</a></li>
+          <li><a href="comparisons.html">Film Comparisons</a></li>
+          <li><a href="resources.html">Resources &amp; Links</a></li>
+          <li><a href="contact.html" class="active">Contact &amp; Feedback</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-intro">
+        <h2>Contact &amp; Feedback</h2>
+        <p class="lead">Have a question, suggestion, or want to collaborate? Send a message using the form below.</p>
+      </section>
+
+      <section class="contact-inner" aria-labelledby="contact-heading">
+        <h3 id="contact-heading">Send a message</h3>
+
+        <form action="#" method="post" novalidate>
+          <div class="form-row">
+            <label for="name">Full name</label>
+            <input id="name" name="name" type="text" placeholder="Your full name" required>
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required>
+          </div>
+
+          <div class="form-row">
+            <label for="subject">Subject</label>
+            <input id="subject" name="subject" type="text" placeholder="Brief subject" required>
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone (optional)</label>
+            <input id="phone" name="phone" type="tel" placeholder="Optional phone number">
+          </div>
+
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+          </div>
+
+          <div class="form-row">
+            <label for="role">I'm reaching out as</label>
+            <select id="role" name="role" aria-label="Reason for contact">
+              <option value="student">Student / Learner</option>
+              <option value="collab">Potential collaborator</option>
+              <option value="feedback">Feedback on site</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <label for="updates" style="font-weight:600;">
+              <input id="updates" name="updates" type="checkbox" value="yes"> Subscribe to occasional updates
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn primary">Send message</button>
+            <button type="reset" class="btn">Reset</button>
+          </div>
+        </form>
+
+        <div aria-label="Alternative contact" style="margin-top:16px;">
+          <h4 style="margin:0 0 8px 0; color:var(--text);">Alternative contact</h4>
+          <p class="helper">Project contact: bella1211gold@gmail.com</p>
+          <p class="helper">Repository: https://github.com/Bellaamann/thegrainjournal</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-contact">
+          <p>Contact: <span class="email">bella1211gold@gmail.com</span></p>
+        </div>
+
+        <nav aria-label="Footer navigation">
+          <ul class="footer-nav">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="comparisons.html">Comparisons</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="tips.html">Tips</a></li>
+          </ul>
+        </nav>
+
+        <div class="copyright">
+          <p>© 2025 The Grain Journal - All photos by author unless noted.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
